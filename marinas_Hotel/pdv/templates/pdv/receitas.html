@@ -1,0 +1,27 @@
+{% extends 'pdv/base.html' %}
+
+{% load static %} 
+{% block extra_styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'tabelas/tabelas.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="titulo">
+    <h2>Lista de Receitas</h2>
+    <a href="{% url 'criar_receita' %}" class="btn">Criar Receita</a>
+</div>
+<table>
+    <tr>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data da Receita</th>
+    </tr>
+    {% for receita in receitas %}
+    <tr>
+        <td>{{ receita.desc_rec }}</td>
+        <td>{{ receita.valor_rec }}</td>
+        <td>{{ receita.data_rec }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

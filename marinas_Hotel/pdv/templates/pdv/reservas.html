@@ -1,0 +1,30 @@
+{% extends 'pdv/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'tabelas/tabelas.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="titulo">
+<h2>Lista de Reservas</h2>
+    <a href="{% url 'criar_reserva' %}" class="btn">Criar Reserva</a>
+</div>
+
+<table>
+    <tr>
+        <th>Cliente</th>
+        <th>Serviço</th>
+        <th>Data e Hora</th>
+    </tr>
+    {% for reserva in reservas %}
+
+    <tr>
+        <td>{{ reserva.cliente.nome }}</td>
+        <td>{{ reserva.servico.nome }}</td>
+        <td>{{ reserva.data_hora|date:"d/m/y" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
